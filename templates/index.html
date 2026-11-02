@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Flask App | 2402600016</title>
+  <style>
+    body { color: #111; background: #fff; margin: 16px; font-family: "Times New Roman", serif; line-height: 1.5; }
+    h1 { font-size: 2rem; font-weight: 600; line-height: 1.25; overflow-wrap: anywhere; }
+    a { color: #0000ee; }
+    li a { display: inline-block; min-height: 44px; line-height: 44px; }
+    a:focus-visible { outline: 2px solid #111; outline-offset: 3px; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Flask App with CI/CD Test, NIM: 2402600016</h1>
+    <p>Gilang Zahra Ramdhani</p>
+    {% if automated %}
+    <p>Deployed automatically using GitHub Actions. <a href="https://github.com/glnggggzr/pmb-portal-2402600016/actions/runs/{{ run_id }}">Lihat proses deploy</a></p>
+    {% else %}
+    <p>Aplikasi Flask untuk praktikum Cloud Computing.</p>
+    {% endif %}
+    <ul>
+      <li><a href="{{ url_for('health') }}">Health Check</a></li>
+      <li><a href="{{ url_for('info') }}">API Info</a></li>
+    </ul>
+  </main>
+</body>
+</html>
