@@ -39,7 +39,3 @@ Setelah deployment selesai, uji domain production dan endpoint `/health`. Pertah
 ## Catatan pengamatan
 
 `id_instance` dan `permintaan_ke` berada dalam memori proses untuk latihan stateless. Penghitung ini bukan basis data dan tidak boleh digunakan sebagai jumlah pendaftar sebenarnya.
-
-## Penggunaan AI
-
-Hermes Agent membantu menyalin kode modul ke berkas yang dapat dijalankan, menyusun pengujian otomatis, dokumentasi, dan proses publikasi. Keberhasilan deployment harus diverifikasi pada URL yang benar-benar aktif, bukan diasumsikan.
