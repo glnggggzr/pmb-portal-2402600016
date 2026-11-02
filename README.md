@@ -41,9 +41,9 @@ Setelah deployment selesai, uji domain production, `/health`, dan `/api/info`. P
 
 Workflow `.github/workflows/deploy.yml` menguji aplikasi dengan Python 3.13. Push ke `main` atau pemicu manual menjalankan deployment production setelah tes lulus; pull request hanya menjalankan tes.
 
-Deployment memerlukan repository secret `VERCEL_TOKEN` yang valid untuk project ini. Token tidak boleh ditaruh dalam kode. Perbarui secret sebelum token kedaluwarsa. ID project dan organisasi pada workflow bukan token rahasia.
+Deployment memerlukan repository secret `VERCEL_TOKEN` yang valid untuk project ini. Token tidak boleh ditaruh dalam kode. Perbarui secret sebelum token kedaluwarsa. ID project dan organisasi pada skrip deployment bukan token rahasia.
 
-Workflow mengisi `CI_GIT_SHA`, `CI_RUN_ID`, dan `DEPLOYED_BY_GITHUB_ACTIONS` pada deployment. Halaman hanya menampilkan keterangan GitHub Actions ketika deployment membawa penanda tersebut, beserta tautan ke run yang bersangkutan. Tahap verifikasi memeriksa endpoint publik dan kecocokan commit.
+Workflow mengirim berkas aplikasi ke Vercel Deployment API, disertai `deployment_info.json` berisi SHA commit dan nomor run yang sebenarnya. Berkas identitas ini dibuat dalam payload deployment, tidak memuat rahasia dan tidak ditulis ke repositori. Halaman hanya menampilkan keterangan GitHub Actions ketika deployment membawa penanda tersebut, beserta tautan ke run yang bersangkutan. Tahap verifikasi memeriksa endpoint publik dan kecocokan commit.
 
 Jalankan `python scripts/verify_deployment.py` untuk memeriksa aplikasi publik. Untuk memverifikasi deployment CI tertentu, isi environment variable `EXPECTED_COMMIT` dengan SHA commit yang diharapkan.
 

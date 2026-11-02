@@ -39,6 +39,14 @@ class PortalTests(unittest.TestCase):
             self.assertEqual(data['nim'], '2402600016')
             self.assertEqual(data['nama'], 'Gilang Zahra Ramdhani')
 
+    def test_deployment_file_provides_ci_identity(self):
+        from unittest.mock import patch
+        import app as portal
+        with patch.object(portal, 'DEPLOYMENT_INFO', {'run_id': '98765', 'commit': '123abcd456', 'source': 'github-actions'}, create=True):
+            html = portal.app.test_client().get('/').get_data(as_text=True)
+            self.assertIn('/actions/runs/98765', html)
+            self.assertEqual(portal.app.test_client().get('/api/info').get_json()['commit'], '123abcd')
+
     def test_health_is_ok(self):
         from app import app
         response = app.test_client().get('/health')
